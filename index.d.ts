@@ -17,8 +17,8 @@ export interface CarouselProps {
     showArrows?: boolean;
     showStatus?: boolean;
     showIndicators?: boolean;
-    leftArrow: React.JSX.Element,
-    rightArrow: React.JSX.Element,
+    leftArrow?: React.JSX.Element,
+    rightArrow?: React.JSX.Element,
     showThumbs?: boolean;
     infiniteLoop?: boolean;
     selectedItem?: number;

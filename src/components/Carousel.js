@@ -18,6 +18,8 @@ class Carousel extends Component {
         className: PropTypes.string,
         children: PropTypes.node,
         showArrows: PropTypes.bool,
+        leftArrow: PropTypes.func,
+        rightArrow: PropTypes.func,
         showStatus: PropTypes.bool,
         showIndicators: PropTypes.bool,
         infiniteLoop: PropTypes.bool,
@@ -740,12 +742,16 @@ class Carousel extends Component {
         return (
             <div className={this.props.className} ref={this.setCarouselWrapperRef}>
                 <div className={klass.CAROUSEL(true)} style={{ width: this.props.width }}>
-                    <button
-                        type="button"
-                        aria-label={this.props.labels.leftArrow}
-                        className={klass.ARROW_PREV(!hasPrev)}
-                        onClick={this.onClickPrev}
-                    />
+                    {this.props.leftArrow ? (
+                        this.props.leftArrow({ hasPrev, onClick: this.decrement })
+                    ) : (
+                        <button
+                            type="button"
+                            aria-label={this.props.labels.leftArrow}
+                            className={klass.ARROW_PREV(!hasPrev)}
+                            onClick={this.onClickPrev}
+                        />
+                    )}
                     <div
                         className={klass.WRAPPER(true, this.props.axis)}
                         style={containerStyles}
@@ -774,12 +780,16 @@ class Carousel extends Component {
                             </ul>
                         )}
                     </div>
-                    <button
-                        type="button"
-                        aria-label={this.props.labels.rightArrow}
-                        className={klass.ARROW_NEXT(!hasNext)}
-                        onClick={this.onClickNext}
-                    />
+                    {this.props.rightArrow ? (
+                        this.props.rightArrow({ hasNext, onClick: this.increment })
+                    ) : (
+                        <button
+                            type="button"
+                            aria-label={this.props.labels.rightArrow}
+                            className={klass.ARROW_NEXT(!hasNext)}
+                            onClick={this.onClickNext}
+                        />
+                    )}
 
                     {this.renderControls()}
                     {this.renderStatus()}

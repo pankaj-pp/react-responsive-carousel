@@ -17,6 +17,8 @@ export interface CarouselProps {
     showArrows?: boolean;
     showStatus?: boolean;
     showIndicators?: boolean;
+    leftArrow: React.JSX.Element,
+    rightArrow: React.JSX.Element,
     showThumbs?: boolean;
     infiniteLoop?: boolean;
     selectedItem?: number;
@@ -53,7 +55,7 @@ export interface CarouselState {
 
 export class Carousel extends React.Component<CarouselProps, CarouselState> {
     constructor(props: CarouselProps, context: any);
-    render(): JSX.Element;
+    render(): React.JSX.Element;
 }
 
 export interface ThumbsProps {
@@ -72,5 +74,5 @@ export interface ThumbState {
 
 export class Thumbs extends React.Component<ThumbsProps, ThumbState> {
     constructor(props: ThumbsProps, context: any);
-    render(): JSX.Element;
+    render(): React.JSX.Element;
 }

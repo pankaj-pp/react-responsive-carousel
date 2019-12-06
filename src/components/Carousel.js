@@ -752,6 +752,7 @@ class Carousel extends Component {
                             onClick={this.onClickPrev}
                         />
                     )}
+                    {this.props.rightArrow ? this.props.rightArrow({ hasNext, onClick: this.increment }) : null}
                     <div
                         className={klass.WRAPPER(true, this.props.axis)}
                         style={containerStyles}
@@ -780,16 +781,14 @@ class Carousel extends Component {
                             </ul>
                         )}
                     </div>
-                    {this.props.rightArrow ? (
-                        this.props.rightArrow({ hasNext, onClick: this.increment })
-                    ) : (
+                    {!this.props.rightArrow ? (
                         <button
                             type="button"
                             aria-label={this.props.labels.rightArrow}
                             className={klass.ARROW_NEXT(!hasNext)}
                             onClick={this.onClickNext}
                         />
-                    )}
+                    ) : null}
 
                     {this.renderControls()}
                     {this.renderStatus()}
